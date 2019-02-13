@@ -161,11 +161,11 @@ add_dependencies(WalletService version)
 add_dependencies(zedwallet version)
 
 # Finally build the binaries
-set_property(TARGET TurtleCoind PROPERTY OUTPUT_NAME "TurtleCoind")
-set_property(TARGET zedwallet PROPERTY OUTPUT_NAME "zedwallet")
-set_property(TARGET zedwallet++ PROPERTY OUTPUT_NAME "zedwallet-beta")
-set_property(TARGET service PROPERTY OUTPUT_NAME "turtle-service")
-set_property(TARGET miner PROPERTY OUTPUT_NAME "miner")
+set_property(TARGET TurtleCoind PROPERTY OUTPUT_NAME "GreenPoweredPaymentd")
+set_property(TARGET zedwallet PROPERTY OUTPUT_NAME "greenwallet")
+set_property(TARGET zedwallet++ PROPERTY OUTPUT_NAME "greenwallet-beta")
+set_property(TARGET service PROPERTY OUTPUT_NAME "green-service")
+set_property(TARGET miner PROPERTY OUTPUT_NAME "green-miner")
 set_property(TARGET cryptotest PROPERTY OUTPUT_NAME "cryptotest")
 set_property(TARGET WalletApi PROPERTY OUTPUT_NAME "wallet-api")
 

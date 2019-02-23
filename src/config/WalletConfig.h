@@ -1,5 +1,6 @@
 // Copyright (c) 2018, The TurtleCoin Developers
-// 
+// Copyright (c) 2019, GreenPoweredPayment
+//
 // Please see the included LICENSE file for more information.
 
 #pragma once
@@ -10,10 +11,10 @@
 namespace WalletConfig
 {
     /* The prefix your coins address starts with */
-    const std::string_view addressPrefix = "TRTL";
+    const std::string_view addressPrefix = "gPp";
 
     /* Your coins 'Ticker', e.g. Monero = XMR, Bitcoin = BTC */
-    const std::string ticker = "TRTL";
+    const std::string ticker = "GPP";
 
     /* The filename to output the CSV to in save_csv */
     const std::string csvFilename = "transactions.csv";
@@ -23,20 +24,20 @@ namespace WalletConfig
     const std::string addressBookFilename = ".addressBook.json";
 
     /* The name of your deamon */
-    const std::string daemonName = "TurtleCoind";
+    const std::string daemonName = "GreenPoweredPaymentd";
 
     /* The name to call this wallet */
-    const std::string walletName = "zedwallet";
+    const std::string walletName = "greenwallet";
 
     /* The name of service/walletd, the programmatic rpc interface to a
        wallet */
-    const std::string walletdName = "turtle-service";
+    const std::string walletdName = "green-service";
 
     /* The full name of your crypto */
     const std::string coinName = std::string(CryptoNote::CRYPTONOTE_NAME);
 
-    /* Where can your users contact you for support? E.g. discord */
-    const std::string contactLink = "http://chat.turtlecoin.lol";
+    /* Where can your users contact you for support? E.g. discord http://chat.turtlecoin.lol*/
+    const std::string contactLink = "https://github.com/greenpoweredpayment/greenpoweredpayment";
 
 
     /* The number of decimals your coin has */
@@ -45,7 +46,7 @@ namespace WalletConfig
 
 
     /* The length of a standard address for your coin */
-    const uint16_t standardAddressLength = 99;
+    const uint16_t standardAddressLength = 98;
 
     /* The length of an integrated address for your coin - It's the same as
        a normal address, but there is a paymentID included in there - since
@@ -56,7 +57,7 @@ namespace WalletConfig
                                            + ((64 * 11) / 8);
 
     /* The default fee value to use with transactions (in ATOMIC units!) */
-    const uint64_t defaultFee = CryptoNote::parameters::MINIMUM_FEE; 
+    const uint64_t defaultFee = CryptoNote::parameters::MINIMUM_FEE;
 
     /* The minimum fee value to allow with transactions (in ATOMIC units!) */
     const uint64_t minimumFee = CryptoNote::parameters::MINIMUM_FEE;

@@ -6,24 +6,12 @@
 #pragma once
 
 const std::string windowsAsciiArt =
-        "\n _______      ______     ______   \n"
-        "  /______/\    /_____/\   /_____/\  \n"
-        "  \::::__\/__  \:::_ \ \  \:::_ \ \ \n"
-        "   \:\ /____/\  \:(_) \ \  \:(_) \ \\n"
-        "    \:\\_  _\/   \: ___\/   \: ___\/\n"
-        "     \:\_\ \ \    \ \ \      \ \ \  \n"
-        "      \_____\/     \_\/       \_\/  \n"
-        "        -- GreenPoweredPayment --   \n"
+      "--GreenPoweredPayment--";
+
 
 const std::string nonWindowsAsciiArt =
-        "\n ____     ____     ____    \n"
-        "  /\  _`\  /\  _`\  /\  _`\  \n"
-        "  \ \ \L\_\\ \ \L\ \\ \ \L\ \\n"
-        "   \ \ \L_L \ \ ,__/ \ \ ,__/\n"
-        "    \ \ \/, \\ \ \/   \ \ \/ \n"
-        "     \ \____/ \ \_\    \ \_\ \n"
-        "      \/___/   \/_/     \/_/ \n"
-        "    -- GreenPoweredPayment --\n"
+      "--GreenPoweredPayment--";
+
 
 /* Windows has some characters it won't display in a terminal. If your ascii
    art works fine on Windows and Linux terminals, just replace 'asciiArt' with

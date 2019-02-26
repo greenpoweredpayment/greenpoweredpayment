@@ -255,15 +255,17 @@ const uint64_t DATABASE_READ_BUFFER_MB_DEFAULT_SIZE          = 10;
 const uint32_t DATABASE_DEFAULT_MAX_OPEN_FILES               = 100;
 const uint16_t DATABASE_DEFAULT_BACKGROUND_THREADS_COUNT     = 2;
 
-const char     LATEST_VERSION_URL[]                          = "http://latest.turtlecoin.lol";
-const std::string LICENSE_URL                                = "https://github.com/turtlecoin/turtlecoin/blob/master/LICENSE";
+const char     LATEST_VERSION_URL[]                          = "https://github.com/greenpoweredpayment/greenpoweredpayment/tree/master";
+const std::string LICENSE_URL                                = "https://github.com/greenpoweredpayment/greenpoweredpayment/blob/master/LICENSE";
 const static   boost::uuids::uuid CRYPTONOTE_NETWORK         =
 {
     {  0xa1, 0xb2, 0xc1, 0xa1, 0x1a, 0x21, 0x19, 0x1a, 0x13, 0x13, 0x14, 0x81, 0x75, 0x19, 0x21, 0x22  }
 };
 
 const char* const SEED_NODES[] = {
-  "95.179.184.69:21314",//green
+    "95.179.184.69:21314",//green
+    "45.76.82.74:21314",//power
+  //"95.179.184.69:21314",//payment
   //"206.189.142.142:11897",//rock
   //"145.239.88.119:11999", //cision
   //"142.44.242.106:11897", //tom

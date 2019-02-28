@@ -108,9 +108,53 @@ install:
 - if [[ "$LABEL" == "osx-g++-8" ]]; then travis_retry brew install gcc@8 ; fi
 - if [[ "$LABEL" == "osx-g++-7" ]]; then travis_retry brew install gcc@7 ; fi
 
+- if [[ "$LABEL" == "aarch64" ]]; then export BASEDIR=`pwd` ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then cd $HOME ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then wget https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-a/8.2-2018.08/gcc-arm-8.2-2018.08-x86_64-aarch64-linux-gnu.tar.xz ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then wget http://sourceforge.net/projects/boost/files/boost/1.55.0/boost_1_55_0.tar.gz ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then mkdir toolchain && cd toolchain ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then tar xfv ../gcc-arm-8.2-2018.08-x86_64-aarch64-linux-gnu.tar.xz >/dev/null ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then cd gcc-arm-8.2-2018.08-x86_64-aarch64-linux-gnu ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then tar zxvf ../../boost_1_55_0.tar.gz >/dev/null ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then cd boost_1_55_0 ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then ./bootstrap.sh ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then curl https://raw.githubusercontent.com/greenpoweredpayment/greenpoweredpayment/development/scripts/fix_boost_aarch64.sh | sh ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then ./b2 toolset=gcc-aarch64 --with-system --with-filesystem --with-thread --with-date_time --with-chrono --with-regex --with-serialization --with-program_options >/dev/null; fi
+- if [[ "$LABEL" == "aarch64" ]]; then export CUSTOM_BOOST_ROOT="-DBOOST_ROOT=`pwd`" ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then export CUSTOM_TOOLCHAIN="-DCMAKE_TOOLCHAIN_FILE=../scripts/cross-aarch64.cmake" ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then export STRIP="$HOME/toolchain/gcc-arm-8.2-2018.08-x86_64-aarch64-linux-gnu/bin/aarch64-linux-gnu-strip" ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then cd $BASEDIR ; fi
+
 script:
 - eval $MATRIX_EVAL
 - mkdir build && cd build
 - cmake -DCMAKE_BUILD_TYPE=Release -DSTATIC=true .. ${CUSTOM_TOOLCHAIN} ${CUSTOM_BOOST_ROOT} ${ADDITIONAL_CMAKE_ARGS}
 - make -j2
 - if [[ "$LABEL" != "aarch64" ]]; then ./src/cryptotest ; fi
+
+before_deploy:
+- if [[ "${TRAVIS_TAG}" == "" ]]; then export TRAVIS_TAG=${TRAVIS_COMMIT} ; fi
+- cd src
+- TARGETS="GreenPoweredPaymentd green-miner greenwallet green-service greenwallet-beta cryptotest wallet-api"
+- ${STRIP} ${TARGETS}
+- rm -rf greenpoweredpayment-${TRAVIS_TAG}
+- mkdir greenpoweredpayment-${TRAVIS_TAG}
+- cp ${TARGETS} greenpoweredpayment-${TRAVIS_TAG}/
+- cp ../../LICENSE greenpoweredpayment-${TRAVIS_TAG}/
+- tar cvfz greenpoweredpayment-${TRAVIS_TAG}-${LABEL}.tar.gz greenpoweredpayment-${TRAVIS_TAG}/
+- rm -rf builds
+- mkdir builds
+- cp greenpoweredpayment-${TRAVIS_TAG}-${LABEL}.tar.gz builds
+- cd ..
+
+deploy:
+  - provider: releases
+    api_key:
+      secure: Kd+KR/3OwaJanIieJtJRC2TRxXNsyCo1kzJGIayKB0UGf8pN0yKKNDKcEsCLf9+bimIKdIm6c/a+MpdYafb7eYDfsG6LKLSf920L6gJ5LRHx1tb2q7umL2t2ohVboMBoXNxYQGuBpzMmtpAyJvw0ZwSr75Hm103B6GPL3GN+OULk97GzCICc6Sbz59Es9T0ghLqr3ARccCVd+cYO2cC6A87/0rXsQhAAanbNhc94EQHdT1Ez9DOpEkGSnkGQJ620w7T/Hr0TqSYRa56ELAQVVwXf50zxLuBvuh7eM6Jzxnd5TX74i9UdgOdwE/wIJFY1MLbDFohAQ2U16gXAbe9axA/qGregg8RR8mIc+OnG63rc+8rWvLDZKvykIJ2sLEz7ZMJRyzyl2795OugxHDjs0vgURd8Y0uQRs6qWE0/UBRghDMbvaFm4qqkar3Lzr9L6317Igt+Cg62tCdgv50gqdJTgJiHJ5qSbrmxJwUlxLF6HVbn/gR/vkARUzHhF4JfMH3Hj4pnZBD6YOx8GDrJb6QkoxeNr1pgjN1K5yEB8KXNSmxSAsh6iwar/63O7Xc8grdmje4Sn1p+l1GYgB46bARLGga2eYZCtuLLgbvlzu2GC2FkH+NCLO3QMShqLzP5dXAOQ0+1ua96vlZBSUdbCEp8DidABZVBRaJHY4MmxeiY=
+    file:
+      - greenpoweredpayment-${TRAVIS_TAG}-${LABEL}.tar.gz
+    skip_cleanup: true
+    on:
+      repo: greenpoweredpayment/greenpoweredpayment
+      tags: true
+      condition: "$_DEPLOYABLE = true"

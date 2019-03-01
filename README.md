@@ -2,14 +2,14 @@
         -- |GreenPoweredPayment| --   
 
 #### Master Build Status
-[![Build Status](https://travis-ci.org/turtlecoin/turtlecoin.svg?branch=master)](https://travis-ci.org/turtlecoin/turtlecoin) [![Build status](https://ci.appveyor.com/api/projects/status/github/turtlecoin/turtlecoin?branch=master&svg=true)](https://ci.appveyor.com/project/RocksteadyTC/turtlecoin)
+[![Build Status](https://travis-ci.org/greenpoweredpayment/greenpoweredpayment.svg?branch=master)](https://travis-ci.org/greenpoweredpayment/greenpoweredpayment) [![Build status]
 
 #### Development Build Status
-[![Build Status](https://travis-ci.org/turtlecoin/turtlecoin.svg?branch=development)](https://travis-ci.org/turtlecoin/turtlecoin) [![Build status](https://ci.appveyor.com/api/projects/status/github/turtlecoin/turtlecoin?branch=development&svg=true)](https://ci.appveyor.com/project/RocksteadyTC/turtlecoin)
+[![Build Status](https://travis-ci.org/greenpoweredpayment/greenpoweredpayment.svg?branch=development)](https://travis-ci.org/greenpoweredpayment/greenpoweredpayment) [![Build status]
 
 ### Installing
 
-We offer binary images of the latest releases here: http://latest.turtlecoin.lol
+Binary images of the latest releases here: https://github.com/greenpoweredpayment/greenpoweredpayment/releases  
 
 If you would like to compile yourself, read on.
 

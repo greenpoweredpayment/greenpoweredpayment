@@ -156,5 +156,5 @@ deploy:
     skip_cleanup: true
     on:
       repo: greenpoweredpayment/greenpoweredpayment
-      tags: false
+      tags: true
       condition: "$_DEPLOYABLE = true"

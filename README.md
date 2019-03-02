@@ -1,5 +1,5 @@
 
-        -- |GreenPoweredPayment| --   
+        --|GreenPoweredPayment|--   
 
 #### Master Build Status
 [![Build Status](https://travis-ci.com/greenpoweredpayment/greenpoweredpayment.svg?branch=master)](https://travis-ci.com/greenpoweredpayment/greenpoweredpayment)

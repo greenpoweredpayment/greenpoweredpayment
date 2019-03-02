@@ -135,6 +135,12 @@ const size_t   MAX_BLOCK_SIZE_INITIAL                        = 100000;
 const uint64_t MAX_BLOCK_SIZE_GROWTH_SPEED_NUMERATOR         = 100 * 1024;
 const uint64_t MAX_BLOCK_SIZE_GROWTH_SPEED_DENOMINATOR       = 365 * 24 * 60 * 60 / DIFFICULTY_TARGET;
 const uint64_t MAX_EXTRA_SIZE                                = 140000;
+const uint64_t MAX_EXTRA_SIZE_V2                             = 1024;
+const uint64_t MAX_EXTRA_SIZE_V2_HEIGHT                      = 1300000;
+
+/* For new projects forked from this code base, this value should be
+   changed to 0 to prevent a possible transaction bloat exploit */
+const uint64_t TRANSACTION_SIGNATURE_COUNT_VALIDATION_HEIGHT = 1400000;
 
 const uint64_t CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS     = 1;
 const uint64_t CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_SECONDS    = DIFFICULTY_TARGET * CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS;
@@ -168,12 +174,13 @@ const uint64_t FORK_HEIGHTS[] =
     //620000,  // 3
     //700000,  // 4
     //800000,  // 5
-    1000000, // 6
-    1200000, // 7
-    1400000, // 8
-    1600000, // 9
-    1800000, // 10
-    2000000, // 11
+    //1000000, // 6
+    //1200000, // 7
+    //1300000, // 8
+    //1400000, // 9
+    //1600000, // 10
+    //1800000, // 11
+    //2000000, // 12
 };
 
 /* MAKE SURE TO UPDATE THIS VALUE WITH EVERY MAJOR RELEASE BEFORE A FORK */
@@ -228,8 +235,8 @@ const size_t   P2P_LOCAL_GRAY_PEERLIST_LIMIT                 =  5000;
 
 // P2P Network Configuration Section - This defines our current P2P network version
 // and the minimum version for communication between nodes
-const uint8_t  P2P_CURRENT_VERSION                           = 4;
-const uint8_t  P2P_MINIMUM_VERSION                           = 3;
+const uint8_t  P2P_CURRENT_VERSION                           = 5;
+const uint8_t  P2P_MINIMUM_VERSION                           = 4;
 
 // This defines the minimum P2P version required for lite blocks propogation
 const uint8_t P2P_LITE_BLOCKS_PROPOGATION_VERSION            = 4;

@@ -63,19 +63,7 @@ script:
 - make -j2
 - if [[ "$LABEL" != "aarch64" ]]; then ./src/cryptotest ; fi
 
-before_deploy:
-- if [[ "${TRAVIS_TAG}" == "" ]]; then export TRAVIS_TAG=${TRAVIS_COMMIT} ; fi
-- cd src
-- TARGETS="GreenPoweredPaymentd green-miner greenwallet green-service greenwallet-beta cryptotest wallet-api"
-- rm -rf greenpoweredpayment-${TRAVIS_TAG}
-- mkdir greenpoweredpayment-${TRAVIS_TAG}
-- cp ${TARGETS} greenpoweredpayment-${TRAVIS_TAG}/
-- cp ../../LICENSE greenpoweredpayment-${TRAVIS_TAG}/
-- tar cvfz greenpoweredpayment-${TRAVIS_TAG}-${LABEL}.tar.gz greenpoweredpayment-${TRAVIS_TAG}/
-- rm -rf builds
-- mkdir builds
-- cp greenpoweredpayment-${TRAVIS_TAG}-${LABEL}.tar.gz builds
-- cd ..
+
 
 script: echo "Deploying to GitHub releases ..."
 

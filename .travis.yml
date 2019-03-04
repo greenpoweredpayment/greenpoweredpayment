@@ -21,75 +21,6 @@ matrix:
     - _DEPLOYABLE="true"
     - STRIP="strip"
 
-  # Ubuntu, g++-7
-  - os: linux
-    compiler: gcc
-    addons:
-      apt:
-        sources:
-        - ubuntu-toolchain-r-test
-        packages:
-          - libboost1.55-all-dev
-          - g++-7
-          - gcc-7
-    env:
-    - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-    - LABEL="linux-g++-7"
-    - STRIP="strip"
-
-  # Ubuntu, clang-6
-  - os: linux
-    compiler: clang
-    addons:
-      apt:
-        sources:
-        - ubuntu-toolchain-r-test
-        - llvm-toolchain-trusty-6.0
-        packages:
-          - libboost1.55-all-dev
-          - clang-6.0
-          - libstdc++-7-dev
-    env:
-    - MATRIX_EVAL="CC=clang-6.0 && CXX=clang++-6.0"
-    - LABEL="linux-clang-6"
-    - STRIP="strip"
-
-  ## OSX, g++-8
-  - os: osx
-    osx_image: xcode10
-    compiler: gcc
-    env:
-    - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
-    - LABEL="osx-g++-8"
-    - STRIP="strip"
-
-  # OSX, g++-7
-  - os: osx
-    osx_image: xcode10
-    compiler: gcc
-    env:
-    - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-    - LABEL="osx-g++-7"
-    - STRIP="strip"
-
-  # OSX, clang
-  - os: osx
-    osx_image: xcode10
-    compiler: clang
-    env:
-    - MATRIX_EVAL="CC=/usr/local/opt/llvm/bin/clang && CXX=/usr/local/opt/llvm/bin/clang++"
-    - LABEL="osx"
-    - _DEPLOYABLE="true"
-    - STRIP="strip"
-
-  # Arm (aarch64) cross compile
-  - os: linux
-    env:
-    - MATRIX_EVAL="CC=aarch64-linux-gnu-gcc && CXX=aarch64-linux-gnu-g++"
-    - LABEL="aarch64"
-    - _DEPLOYABLE="true"
-    - STRIP="aarch64-linux-gnu-strip"
-
 before_install:
 - eval $MATRIX_EVAL
 
@@ -147,10 +78,12 @@ before_deploy:
 - cp greenpoweredpayment-${TRAVIS_TAG}-${LABEL}.tar.gz builds
 - cd ..
 
+script: echo "Deploying to GitHub releases ..."
+
 deploy:
   - provider: releases
-    api_key:
-      secure: Riv/QUipYcd4IlAx2+XxQmvMcRErLy4WlFfYIrrkjeL8hqq1v4wVmzeM/SzqUWPQaqoD/HyF425N/fZib4ae04wIyDlSzAjw2XrRO1vfDMvWUmxKlz4qIY8JwEaS7n3/B/AtQq1M+iCf+D/05E4Cai3TOFNyRYdVZO8shcgKtZwDyjbDPj1odp94Tyn0WSotEPzUHOIWqPi9tBI2Wrzukf4C6V/TRgFFtS6tylAxxMtfcqYJW4I9mrg/HdZMHx5fCsq7iADoQUyMK+DHb+3ApOzaqWezh1r8oHB9POdsTKddgfQlLCQNEJOOAcJ+zPXDnzlZkMzhnaAGXw15k0qFKVdyX53xi2iORyRTiAddWSbzxxWVaaq66kTpSulsBhtjYqY2WDyv6AVGIuAfh1abw0/BxAC1wH4ERmf2MLuZwtzMfPvq8aBNt2q0xd0NqutGEwdGTQWKeit3UUGmgwrrhjTJBjzeqJg2Rq4bjN57FKUwHwZI2Bsimwc/HSelcoexJxhwrqhUv6mmLeBB0drUBFFxUbPDsrCdiprBwcW+8EkAhlx1wOMCTFDCWqhtxSMLALeLxkSDixn3vM2AYDjOy8Fmn+wkkjyrODJyfW95WNpb6ENZiJs/n5Ak4Twede2kgplEd8bokt2iXRUy8kBD6MT/5Fva8yaDP1wy++a5hTc=
+    api_key: 9e0bac8d245a38364e1c0584357d6f8ee37dbb42
+    #  secure: Riv/QUipYcd4IlAx2+XxQmvMcRErLy4WlFfYIrrkjeL8hqq1v4wVmzeM/SzqUWPQaqoD/HyF425N/fZib4ae04wIyDlSzAjw2XrRO1vfDMvWUmxKlz4qIY8JwEaS7n3/B/AtQq1M+iCf+D/05E4Cai3TOFNyRYdVZO8shcgKtZwDyjbDPj1odp94Tyn0WSotEPzUHOIWqPi9tBI2Wrzukf4C6V/TRgFFtS6tylAxxMtfcqYJW4I9mrg/HdZMHx5fCsq7iADoQUyMK+DHb+3ApOzaqWezh1r8oHB9POdsTKddgfQlLCQNEJOOAcJ+zPXDnzlZkMzhnaAGXw15k0qFKVdyX53xi2iORyRTiAddWSbzxxWVaaq66kTpSulsBhtjYqY2WDyv6AVGIuAfh1abw0/BxAC1wH4ERmf2MLuZwtzMfPvq8aBNt2q0xd0NqutGEwdGTQWKeit3UUGmgwrrhjTJBjzeqJg2Rq4bjN57FKUwHwZI2Bsimwc/HSelcoexJxhwrqhUv6mmLeBB0drUBFFxUbPDsrCdiprBwcW+8EkAhlx1wOMCTFDCWqhtxSMLALeLxkSDixn3vM2AYDjOy8Fmn+wkkjyrODJyfW95WNpb6ENZiJs/n5Ak4Twede2kgplEd8bokt2iXRUy8kBD6MT/5Fva8yaDP1wy++a5hTc=
     file:
       - greenpoweredpayment-${TRAVIS_TAG}-${LABEL}.tar.gz
     skip_cleanup: true

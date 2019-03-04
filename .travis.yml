@@ -67,7 +67,6 @@ before_deploy:
 - if [[ "${TRAVIS_TAG}" == "" ]]; then export TRAVIS_TAG=${TRAVIS_COMMIT} ; fi
 - cd src
 - TARGETS="GreenPoweredPaymentd green-miner greenwallet green-service greenwallet-beta cryptotest wallet-api"
-- ${STRIP} ${TARGETS}
 - rm -rf greenpoweredpayment-${TRAVIS_TAG}
 - mkdir greenpoweredpayment-${TRAVIS_TAG}
 - cp ${TARGETS} greenpoweredpayment-${TRAVIS_TAG}/

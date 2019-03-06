@@ -76,6 +76,8 @@ script:
 #      repo: greenpoweredpayment/greenpoweredpayment
 #      tags: true
 #      condition: "$_DEPLOYABLE = true"
+before_deploy:
+- ls -al
 
 deploy:
   provider: releases

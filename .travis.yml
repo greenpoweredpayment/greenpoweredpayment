@@ -61,7 +61,7 @@ script:
 - mkdir build && cd build
 - cmake -DCMAKE_BUILD_TYPE=Release -DSTATIC=true .. ${CUSTOM_TOOLCHAIN} ${CUSTOM_BOOST_ROOT} ${ADDITIONAL_CMAKE_ARGS}
 - make -j2
-- if [[ "$LABEL" != "aarch64" ]]; then ./src/cryptotest ; fi
+#- if [[ "$LABEL" != "aarch64" ]]; then ./src/cryptotest ; fi
 
 
 before_deploy:
@@ -80,12 +80,13 @@ before_deploy:
 - cd ..
 
 deploy:
-  provider: releases
-  api_key:
-    secure: H7+0xUa01wl2RMEPyf6ivYGokLyb1TwE7yn7R9zW+/H5+4YvH5Uxd8IUs4K90yLmHJgwUVqt4PqPxE1KUbxBsQT4WrWpK0BJ43lnuKxasd+zLn3oZd0qFDDRJAPodODHPN65oGWhGXYfQu2QCVjWPP7+lVp5T/xvh92ts3+rjf5Eo65ho2gXvGUlt1C3EKUwXGX9b55UlfJmU+HPJmh5iZmuCGshi7qI/CIcG4dJGXjI9IaPFNnr1SAggiUheV0CGGes64UWUKhA4dznlL2flkbk6UUJBQo6PpmFjQ5H92nLIHezoBIpwr31DxL9OcWs+xtG8ac6chUTHz4rs0j18m07M0ss8gBGNHoXJP1AcvTSYQmsn51lrinJSpnkqbDXNOfk2X4fm+cpPDQbTtNJVc4CNoPeCq80BRBUg0vd6+XVKfGsIIjn0q/4EsvCu1R+AlppIrq1FcGEEwFcAyS9F/9yiQBqSTOr4OqpRclH94paipg9gs0gPkeJMDcfbuFXAwHY+L002RyzdoWSG81OxhA2dD7Rv6Sm75T6/6kxVWZFlA4xK18leDUmzBRz240Jz3nak9QgJx429f7mlip/mttWhPIeguZ46IQHNugTQ65D/S0DVwHt3IabauAlVh+wtVh5eKqbr1oFq6QjbDdSDwQRp15OsTJX6sZW8DyL/Yg=
-  file: greenpoweredpayment-${TRAVIS_TAG}-${LABEL}.tar.gz
-  skip_cleanup: true
-  on:
-    repo: greenpoweredpayment/greenpoweredpayment
-    tags: true
-    condition: "$_DEPLOYABLE = true"
+  - provider: releases
+    api_key:
+      secure: H7+0xUa01wl2RMEPyf6ivYGokLyb1TwE7yn7R9zW+/H5+4YvH5Uxd8IUs4K90yLmHJgwUVqt4PqPxE1KUbxBsQT4WrWpK0BJ43lnuKxasd+zLn3oZd0qFDDRJAPodODHPN65oGWhGXYfQu2QCVjWPP7+lVp5T/xvh92ts3+rjf5Eo65ho2gXvGUlt1C3EKUwXGX9b55UlfJmU+HPJmh5iZmuCGshi7qI/CIcG4dJGXjI9IaPFNnr1SAggiUheV0CGGes64UWUKhA4dznlL2flkbk6UUJBQo6PpmFjQ5H92nLIHezoBIpwr31DxL9OcWs+xtG8ac6chUTHz4rs0j18m07M0ss8gBGNHoXJP1AcvTSYQmsn51lrinJSpnkqbDXNOfk2X4fm+cpPDQbTtNJVc4CNoPeCq80BRBUg0vd6+XVKfGsIIjn0q/4EsvCu1R+AlppIrq1FcGEEwFcAyS9F/9yiQBqSTOr4OqpRclH94paipg9gs0gPkeJMDcfbuFXAwHY+L002RyzdoWSG81OxhA2dD7Rv6Sm75T6/6kxVWZFlA4xK18leDUmzBRz240Jz3nak9QgJx429f7mlip/mttWhPIeguZ46IQHNugTQ65D/S0DVwHt3IabauAlVh+wtVh5eKqbr1oFq6QjbDdSDwQRp15OsTJX6sZW8DyL/Yg=
+    file:
+      - greenpoweredpayment-${TRAVIS_TAG}-${LABEL}.tar.gz
+    skip_cleanup: true
+    on:
+      repo: greenpoweredpayment/greenpoweredpayment
+      tags: true
+      condition: "$_DEPLOYABLE = true"

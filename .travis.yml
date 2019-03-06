@@ -64,18 +64,26 @@ script:
 - if [[ "$LABEL" != "aarch64" ]]; then ./src/cryptotest ; fi
 
 
+#deploy:
+#  - provider: releases
+#    api_key:
+#      secure: XKtaZy1MKuvnDfvemjufWZ8czDs+UgRD1dcjTAbgTDX84rpi13DuwgZlydk4vXTXjm/Fr/TNAe34eVsLk89sbo+05JEiueqJpTGc8AT+JxY1Af/3b1e9EbDf4GUiMk67zzARtmSXJeknbqQWVDqI6ztXdF38mhVdZQfgBjV8D6OJyxb0KY37WDquNyk7qi147QpVsBHUlYnWI3jEEAfTje6WXRisRQReCukOB8b1BRlzkjlDjdhVYFKcBhHM+yAvOS1bIKRmPlnrR9SYHxnokt9zRpn8qkArng4uC2kYRZnbv1MsadtIHekowRAgu/l2ur3BcmayXDUPcoACi3St25b/L0kdWCkTbsl0R2hMcTG/1tbL/0w2fFROCz4nZP3UxRt0LZPvdx+JxUhvZtoMp/YFX8HWTzEvp8p5sS64A/tT3fP1+eEUX8Bgl5tCqECAyW7SGjcxUErGJGSq/+5YPXjP3ak6Fs4Uq6+VTcTyomwN+Eggy37P/t2oHhA8Jw/IYlSE6s+U11SO8bSZG7ms9d2jwdOHljxJxJNVZSXwuyiNfj4RTJn0THElWdImkQtRxNucJImKAGuFJVI9OYtRZC9O5M8tazUq+uA7qHzBgzCaQIOoshF6tP+TH+UvChQlXYvZ2FtkpeLeX2l0+7HFDmHtSTP1obBR2M/UukhNcJ8=
 
-script: echo "Deploying to GitHub releases ..."
+#    file:
+#      - greenpoweredpayment-${TRAVIS_TAG}-${LABEL}.tar.gz
+#    skip_cleanup: true
+#    on:
+#      repo: greenpoweredpayment/greenpoweredpayment
+#      tags: true
+#      condition: "$_DEPLOYABLE = true"
 
 deploy:
-  - provider: releases
-    api_key:
-      secure: XKtaZy1MKuvnDfvemjufWZ8czDs+UgRD1dcjTAbgTDX84rpi13DuwgZlydk4vXTXjm/Fr/TNAe34eVsLk89sbo+05JEiueqJpTGc8AT+JxY1Af/3b1e9EbDf4GUiMk67zzARtmSXJeknbqQWVDqI6ztXdF38mhVdZQfgBjV8D6OJyxb0KY37WDquNyk7qi147QpVsBHUlYnWI3jEEAfTje6WXRisRQReCukOB8b1BRlzkjlDjdhVYFKcBhHM+yAvOS1bIKRmPlnrR9SYHxnokt9zRpn8qkArng4uC2kYRZnbv1MsadtIHekowRAgu/l2ur3BcmayXDUPcoACi3St25b/L0kdWCkTbsl0R2hMcTG/1tbL/0w2fFROCz4nZP3UxRt0LZPvdx+JxUhvZtoMp/YFX8HWTzEvp8p5sS64A/tT3fP1+eEUX8Bgl5tCqECAyW7SGjcxUErGJGSq/+5YPXjP3ak6Fs4Uq6+VTcTyomwN+Eggy37P/t2oHhA8Jw/IYlSE6s+U11SO8bSZG7ms9d2jwdOHljxJxJNVZSXwuyiNfj4RTJn0THElWdImkQtRxNucJImKAGuFJVI9OYtRZC9O5M8tazUq+uA7qHzBgzCaQIOoshF6tP+TH+UvChQlXYvZ2FtkpeLeX2l0+7HFDmHtSTP1obBR2M/UukhNcJ8=
-
-    file:
-      - greenpoweredpayment-${TRAVIS_TAG}-${LABEL}.tar.gz
-    skip_cleanup: true
-    on:
-      repo: greenpoweredpayment/greenpoweredpayment
-      tags: true
-      condition: "$_DEPLOYABLE = true"
+  provider: releases
+  api_key:
+    secure: F8uEmbL9nNqvLimCOQoQACIK/VgVckw3amN40xklqrnZbNAF4zihBz0bGKVvvU5YOJxKl4yqS+GikoDNvQPvYYurWelKd4OYxFbXka8s02Pm8KBxo45SlI4pn28Q7T+Nu35rTD+kuCnOLlFhJZIy4MjvlaQmEwNsOlfcaiX2ZBZtUEGWpNmITm/UtsZ20YfFFYzvULvcKOoKukfYjlHk/TCeFhBLvgZPhvp4J+/3CVa7TrzsYx1bzYJPTeUYCITic6e8lxb8EGdMqEP4ILvTZhUpPyrgECLjqApp9jOCHilr5pgXxxr3aU3XkBikdIJZ/5ZAX59+80svdles914v1HNN5GGrv1ZJcTIFulXrgbEN6qNz9x4N+LjVBWNXEtXJ8Q1bp+8cq4RSWzq0vIJSOGdk++E3VgUxg0GT0mYdmiY79SvYA9e6QHO5dKwLWH3mTj0WqKMdFJnrt41CvRT7d/Xt7mqyOdBzTxOrjto6yofry9CqrhHSK3vM0s4SdkqyW0scXOESqY05+A44ePFvx/Z1/Si4kPh/mSuysIOo0fAgyztTwNHcqQzv+/UgGJepsg5as0ckyxslP/Q7T8fVCJkyVLEZEIo0VEtAjA5MD7Aih6LvdjQkZ/AxGzFY4puKWfCBrDWnS05kHlVnAqPRwQ7+Bd/D72TX/LeIoq12ns8=
+  file: greenpoweredpayment-${TRAVIS_TAG}-${LABEL}.tar.gz
+  skip_cleanup: true
+  on:
+    repo: greenpoweredpayment/greenpoweredpayment
+    tags: true
+    condition: "$_DEPLOYABLE = true"

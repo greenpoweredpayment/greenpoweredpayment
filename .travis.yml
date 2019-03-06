@@ -21,6 +21,75 @@ matrix:
     - _DEPLOYABLE="true"
     - STRIP="strip"
 
+  # Ubuntu, g++-7
+  - os: linux
+    compiler: gcc
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+          - libboost1.55-all-dev
+          - g++-7
+          - gcc-7
+    env:
+    - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+    - LABEL="linux-g++-7"
+    - STRIP="strip"
+
+  # Ubuntu, clang-6
+  - os: linux
+    compiler: clang
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        - llvm-toolchain-trusty-6.0
+        packages:
+          - libboost1.55-all-dev
+          - clang-6.0
+          - libstdc++-7-dev
+    env:
+    - MATRIX_EVAL="CC=clang-6.0 && CXX=clang++-6.0"
+    - LABEL="linux-clang-6"
+    - STRIP="strip"
+
+  ## OSX, g++-8
+  - os: osx
+    osx_image: xcode10
+    compiler: gcc
+    env:
+    - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+    - LABEL="osx-g++-8"
+    - STRIP="strip"
+
+  # OSX, g++-7
+  - os: osx
+    osx_image: xcode10
+    compiler: gcc
+    env:
+    - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+    - LABEL="osx-g++-7"
+    - STRIP="strip"
+
+  # OSX, clang
+  - os: osx
+    osx_image: xcode10
+    compiler: clang
+    env:
+    - MATRIX_EVAL="CC=/usr/local/opt/llvm/bin/clang && CXX=/usr/local/opt/llvm/bin/clang++"
+    - LABEL="osx"
+    - _DEPLOYABLE="true"
+    - STRIP="strip"
+
+  # Arm (aarch64) cross compile
+  - os: linux
+    env:
+    - MATRIX_EVAL="CC=aarch64-linux-gnu-gcc && CXX=aarch64-linux-gnu-g++"
+    - LABEL="aarch64"
+    - _DEPLOYABLE="true"
+    - STRIP="aarch64-linux-gnu-strip"
+
 before_install:
 - eval $MATRIX_EVAL
 

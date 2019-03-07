@@ -151,7 +151,7 @@ deploy:
     api_key:
       secure: Ym216Ou/JlvQMaa36X/w1RSUX7f2C5+zBUclNVqWvwJtQoj3npRsNKKO1TgL/ey3JIkc3UyZorEHnMJOYMsqI2O/JaCqdp9oiX2qXyXijl5wkAYSeg4pWFp4Bj2zLgufBTwHLeTMFOs4rDmo7nW7co5fYqXxHm7N+qjPtmoaFs+zoIyl/K56Muu+mxwFdfBqmAmiojPzzc1fuxt5PWnQvlOtb7kwfB6RM4uUkc+Wv08knxaEaf3pCx+Jy0rhfIoS/8q5ljjvoy7v4cPUByjWG16iGiXxhUcE0e86ICP0xUz2zdEWULJCu45HGLxzG9ciLOIem4mTUYt3zTu+b5hXtpZzyUat6FU3E2pqIPcHTxpf8w3WlvceRDqjqs6U2nk7zv88wWKLzO2Av3JIliPCijlRaKz/NauehpS9FARsg31WT6b9k60nzRtsx6TTPSFzKsYFGCm8ibakaWqSZTXHOrdaAH63GZ6AeUkoaVrfYCJVnvaoNi5JlV4sRAPNX62lhnB2mUVYo2NnQku29J2RS0vaxkGktq1sRCOPShprEqNOcovhIC4CAS/TjLhbgWE/7v3eWyrDps74eEfXNVmNXvCxQMEGWdioKFWFygJRka6pGfIUx/bDdUiUIacyGiCYZKX4B0wRx21qzodu5M2QogmfpeoOgbRFLJClMzUGx9c=
     file:
-      - greenpoweredpayment-${TRAVIS_TAG}-${LABEL}.tar.gz
+      - src/builds/greenpoweredpayment-${TRAVIS_TAG}-${LABEL}.tar.gz
     skip_cleanup: true
     on:
       repo: greenpoweredpayment/greenpoweredpayment

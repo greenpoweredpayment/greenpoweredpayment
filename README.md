@@ -2,10 +2,10 @@
         --|GreenPoweredPayment|--   
 
 #### Master Build Status
-[![Build Status](https://travis-ci.com/greenpoweredpayment/greenpoweredpayment.svg?branch=master)](https://travis-ci.com/greenpoweredpayment/greenpoweredpayment)
+[![Build Status](https://travis-ci.org/greenpoweredpayment/greenpoweredpayment.svg?branch=master)](https://travis-ci.org/greenpoweredpayment/greenpoweredpayment)
 
 #### Development Build Status
-[![Build Status](https://travis-ci.com/greenpoweredpayment/greenpoweredpayment.svg?branch=development)](https://travis-ci.com/greenpoweredpayment/greenpoweredpayment)
+[![Build Status](https://travis-ci.org/greenpoweredpayment/greenpoweredpayment.svg?branch=development)](https://travis-ci.org/greenpoweredpayment/greenpoweredpayment)
 
 ### Installing
 

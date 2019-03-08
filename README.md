@@ -1,5 +1,5 @@
 
-        --|GreenPoweredPayment|--   
+![image](https://user-images.githubusercontent.com/17556759/54060107-cd642580-41fb-11e9-8816-c65461567212.png)
 
 #### Master Build Status
 [![Build Status](https://travis-ci.com/greenpoweredpayment/greenpoweredpayment.svg?branch=master)](https://travis-ci.com/greenpoweredpayment/greenpoweredpayment)

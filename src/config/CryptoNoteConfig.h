@@ -168,10 +168,10 @@ static_assert(UPGRADE_VOTING_WINDOW > 1, "Bad UPGRADE_VOTING_WINDOW");
 /* Block heights we are going to have hard forks at */
 const uint64_t FORK_HEIGHTS[] =
 {
-    //187000,  // 0
-    //350000,  // 1
-    //440000,  // 2
-    //620000,  // 3
+    2816640,  // 0 - 2022
+    11232000,  // 1 - 2030
+    21749760,  // 2 - 2040
+    32359680,  // 3 - 2050
     //700000,  // 4
     //800000,  // 5
     //1000000, // 6
